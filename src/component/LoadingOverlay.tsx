@@ -1,18 +1,17 @@
 // LoadingOverlay.tsx
 import React from "react";
+import { useStateContext } from '../util/StateProvider';
 
 interface LoadingOverlayProps {
   message?: string;
   size?: "small" | "medium" | "large";
   color?: string;
-  visible: boolean;
 }
 
 const LoadingOverlay: React.FC<LoadingOverlayProps> = ({
   message = "Loading...",
   size = "large",
   color = "text-indigo-600",
-  visible,
 }) => {
   const sizeClasses = {
     small: "w-8 h-8",
@@ -26,7 +25,9 @@ const LoadingOverlay: React.FC<LoadingOverlayProps> = ({
     large: "border-8", // 太いボーダー
   };
 
-  if (!visible) return null;
+  const { loading } = useStateContext();
+
+  if (!loading) return null;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">

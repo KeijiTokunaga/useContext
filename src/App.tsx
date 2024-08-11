@@ -6,9 +6,9 @@ function App() {
   return (
     <>
       <Login />
-      <LoadingOverlay visible={true} message="ログイン中..." size="large" color="text-blue-500" />
+      <LoadingOverlay message="ログイン中..." size="large" color="text-blue-500" />
     </>
-  );
+  )
 }
 
 export default App;

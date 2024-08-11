@@ -1,10 +1,11 @@
 // Login.tsx
 import React, { useState } from 'react';
-import LoadingOverlay from './LoadingOverlay';
+import { useStateContext } from '../util/StateProvider';
+
 
 const Login: React.FC = () => {
   const [formValues, setFormValues] = useState<{ username: string; password: string }>({ username: '', password: '' });
-  const [loading, setLoading] = useState(false);
+  const { setLoading } = useStateContext();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -61,8 +62,6 @@ const Login: React.FC = () => {
           </button>
         </form>
       </div>
-
-      <LoadingOverlay visible={loading} message="ログイン中..." size="large" color="text-blue-500" />
     </div>
   );
 };

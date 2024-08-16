@@ -8,11 +8,6 @@ const Home: React.FC = () => {
   const { setLoading } = useLoading();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // 画面が切り替わったら、すぐにローディングを解除
-    setLoading(false);
-  }, [setLoading]);
-
   const handleFetchData = async () => {
     setLoading(true);
 
@@ -30,17 +25,13 @@ const Home: React.FC = () => {
     navigate('/');
   };
 
-  useEffect(() => {
-    handleFetchData();
-  }, []);
-
   return (
     <div className="p-8">
       <h1 className="text-2xl mb-4">ホームページ</h1>
       <p>ここにコンテンツが表示されます。</p>
       <p><strong>ID:</strong> {id}</p>
       <p><strong>Password:</strong> {password}</p>
-      
+
       <button
         onClick={handleFetchData}
         className="bg-green-500 text-white py-2 px-4 rounded mt-4 mr-4"

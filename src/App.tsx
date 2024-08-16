@@ -1,14 +1,25 @@
-import "./App.css";
-import Login from "./component/Login";
-import LoadingOverlay from "./component/LoadingOverlay";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './components/Login';
+import Home from './components/Home';
+import SpinnerOverlay from './components/SpinnerOverlay';
+import { LoadingProvider } from './context/LoadingContext';
+import { AuthProvider } from './context/AuthContext';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <>
-      <Login />
-      <LoadingOverlay message="ログイン中..." size="large" color="text-blue-500" />
-    </>
-  )
-}
+    <LoadingProvider>
+      <AuthProvider>
+        <Router>
+          <SpinnerOverlay />
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/home" element={<Home />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </LoadingProvider>
+  );
+};
 
 export default App;

@@ -25,6 +25,12 @@ const Home: React.FC = () => {
     navigate('/');
   };
 
+  const handleList = () => {
+    navigate('/list');
+  };
+
+
+
   return (
     <div className="p-8">
       <h1 className="text-2xl mb-4">ホームページ</h1>
@@ -41,9 +47,16 @@ const Home: React.FC = () => {
 
       <button
         onClick={handleLogout}
-        className="bg-red-500 text-white py-2 px-4 rounded mt-4"
+        className="bg-red-500 text-white py-2 px-4 rounded mt-4 mr-4"
       >
         ログイン画面に戻る
+      </button>
+
+      <button
+        onClick={handleList}
+        className="bg-red-500 text-white py-2 px-4 rounded mt-4"
+      >
+        リスト画面に遷移
       </button>
     </div>
   );
